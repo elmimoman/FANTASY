@@ -42,6 +42,21 @@ proyección de puntos comparable), preferimos al jugador del Arsenal. Es una pre
 explícita de David, no un criterio de rendimiento — solo aplica como desempate, nunca
 por encima de una diferencia real de proyección.
 
+## 5. Exclusiones temporales por desconfianza de equipo
+
+David puede marcar un equipo como "no confiable para empezar" (ej: incertidumbre por
+cambio de entrenador, fichajes tardíos, pretemporada floja) sin importar lo que
+proyecte el modelo — es una decisión de riesgo, no de rendimiento esperado. Se
+documenta en `mi_equipo.md` con la razón y una fecha de revisión (normalmente tras
+2-3 jornadas de evidencia real), para no dejarla como regla permanente por accidente.
+
+## 6. Pedidos explícitos de un jugador puntual
+
+Si David pide un jugador específico, se mete — pero siempre mostrando qué jugador
+sale y cuál era su proyección vs. la del jugador pedido, para que la decisión sea
+informada y quede clara en el historial de `mi_equipo.md`. El modelo no bloquea
+preferencias personales, solo las hace transparentes.
+
 ## Archivos de datos (se regeneran con los scripts en `scripts/`)
 
 - `fpl_precios.csv` — precios y estadísticas de los 595 jugadores (`scripts/fetch_fpl_prices.py`)
