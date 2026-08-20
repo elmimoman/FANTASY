@@ -29,6 +29,14 @@ proyeccion(jugador, jornada) = ep_next(jugador) * (3 / FDR(equipo, jornada))
 Sumamos la proyección de las próximas 2-3 (o 6, para ver la tendencia completa) jornadas
 para comparar candidatos.
 
+**Regla obligatoria: nunca mostrar solo el total sumado.** Un total de 3 fechas puede
+esconder un bache real (ej: una fecha muy fácil compensando dos difíciles seguidas).
+Siempre desglosar jornada por jornada al presentar una comparación o al revisar la
+plantilla — el promedio/suma es útil para ordenar candidatos, pero la decisión real
+se toma mirando el detalle semana a semana. (Aprendido el 2026-08-20: se presentó el
+total de Gabriel/Raya sin desglosar y se escondió que GW2 y GW3 caen a la mitad por
+Aston Villa fuera y Chelsea en casa, ambos FDR4 — David lo detectó, no el análisis.)
+
 ## 3. Preferencia por track record
 
 Ante proyecciones similares, preferimos jugadores con puntos reales de la temporada

@@ -41,6 +41,32 @@ Vice-capitán: el que no sea capitán esa semana, entre Bruno Fernandes y Haalan
 
 Ver `criterio.md` para el modelo completo y las reglas de desempate/exclusión.
 
+## Discusión abierta (sin decidir todavía)
+
+- **Raya + Gabriel, bache GW2-3:** Arsenal juega Aston Villa (fuera) y Chelsea (casa)
+  en GW2 y GW3, ambos FDR4. Desglose real:
+  - GW1 vs Coventry (H) FDR2 → 6.0 pts proyectados (ambos)
+  - GW2 vs Aston Villa (A) FDR4 → 3.0 pts proyectados (ambos)
+  - GW3 vs Chelsea (H) FDR4 → 3.0 pts proyectados (ambos)
+  Mirando SOLO GW2+GW3, Liverpool (Alisson/Virgil) y Man City (Donnarumma/Guéhi) proyectan
+  mejor para ese par de fechas específico (8.2 y 7.8 vs 6.0 de Raya/Gabriel). Para GW4-6
+  Arsenal vuelve a fixtures normales (Sunderland, Brighton, Leeds), así que es un bache de
+  2 fechas, no una tendencia. Con 1 solo transfer gratis por semana, rotar y volver cuesta
+  caro (-4 o dos transfers "gastados" en un mes). **No se decidió nada** — David lo está
+  pensando, opciones sobre la mesa: (a) aguantar el bache, (b) rotar a Gabriel/Raya afuera
+  para esas 2 fechas y su costo en transfers, (c) esperar a ver GW1 real antes de decidir.
+
+- **Calafiori como alternativa a Gabriel:** David mencionó que le tienta meter a Calafiori
+  (Arsenal DEF, £5.5m, ep_next=2.5, pts_last=109) en vez de Gabriel (£8.0m, ep_next=4.0,
+  pts_last=209). Con el modelo, Calafiori proyecta bastante menos en GW1-3 (7.5 vs 12.0 de
+  Gabriel) — Gabriel sigue siendo superior por proyección aún en el bache de fixtures, así
+  que el atractivo de Calafiori es más "más barato + libera presupuesto" que rendimiento
+  esperado mayor. Sin decidir, queda anotado para la próxima conversación.
+
+- **Lección de proceso:** ver la regla nueva en `criterio.md` sección 2 — nunca presentar
+  solo el total de 2-3 fechas sin el desglose semana por semana, porque esconde baches
+  reales como este.
+
 ## Historial de decisiones
 
 - **2026-08-20:** Plantilla inicial armada con datos reales de la API (595 jugadores), optimizada dentro de £100.0m exactos, máx. 3 jugadores por equipo real.
