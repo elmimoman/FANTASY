@@ -58,7 +58,19 @@ proyecte el modelo — es una decisión de riesgo, no de rendimiento esperado. S
 documenta en `mi_equipo.md` con la razón y una fecha de revisión (normalmente tras
 2-3 jornadas de evidencia real), para no dejarla como regla permanente por accidente.
 
-## 6. Pedidos explícitos de un jugador puntual
+## 6. Excepción para el portero suplente
+
+Las exclusiones de equipo (sección 5) aplican a jugadores que suman puntos jugando.
+El portero suplente casi nunca entra a la cancha (solo si el titular se cae de
+última hora sin tiempo de transfer, o en una semana de Bench Boost), así que ahí
+se elige por mérito puro al precio mínimo, sin aplicar exclusiones de equipo.
+
+## 7. Horarios en hora de Panamá
+
+David está en Panamá (UTC-5, sin horario de verano). Reportar deadlines y horarios
+siempre convertidos a su hora local, no en BST/UTC.
+
+## 8. Pedidos explícitos de un jugador puntual
 
 Si David pide un jugador específico, se mete — pero siempre mostrando qué jugador
 sale y cuál era su proyección vs. la del jugador pedido, para que la decisión sea
