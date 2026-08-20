@@ -1,0 +1,21 @@
+equipo,GW1,GW2,GW3,GW4,GW5,GW6,fdr_promedio
+Everton,Crystal Palace (H) FDR3,Bournemouth (A) FDR3,Man Utd (H) FDR4,Spurs (A) FDR3,Ipswich Town (H) FDR2,Hull City (A) FDR2,2.83
+Liverpool,Newcastle (A) FDR3,Nott'm Forest (H) FDR3,Ipswich Town (A) FDR2,Fulham (H) FDR2,Bournemouth (A) FDR3,Man City (H) FDR4,2.83
+Man Utd,Hull City (A) FDR2,Ipswich Town (H) FDR2,Everton (A) FDR3,Man City (H) FDR4,Fulham (A) FDR3,Spurs (H) FDR3,2.83
+Newcastle,Liverpool (H) FDR4,Spurs (A) FDR3,Bournemouth (H) FDR3,Leeds (A) FDR3,Hull City (H) FDR2,Coventry City (A) FDR2,2.83
+Arsenal,Coventry City (H) FDR2,Aston Villa (A) FDR4,Chelsea (H) FDR4,Sunderland (A) FDR3,Brighton (A) FDR3,Leeds (H) FDR2,3.0
+Aston Villa,Brighton (A) FDR3,Arsenal (H) FDR4,Hull City (A) FDR2,Nott'm Forest (H) FDR3,Spurs (A) FDR3,Brentford (H) FDR3,3.0
+Brighton,Aston Villa (H) FDR3,Chelsea (A) FDR4,Leeds (H) FDR2,Coventry City (A) FDR2,Arsenal (H) FDR4,Sunderland (A) FDR3,3.0
+Chelsea,Fulham (A) FDR3,Brighton (H) FDR2,Arsenal (A) FDR5,Hull City (H) FDR2,Brentford (A) FDR3,Bournemouth (H) FDR3,3.0
+Crystal Palace,Everton (A) FDR3,Man City (H) FDR4,Fulham (A) FDR3,Ipswich Town (H) FDR2,Leeds (A) FDR3,Nott'm Forest (H) FDR3,3.0
+Ipswich Town,Sunderland (H) FDR2,Man Utd (A) FDR4,Liverpool (H) FDR4,Crystal Palace (A) FDR3,Everton (A) FDR3,Fulham (H) FDR2,3.0
+Man City,Bournemouth (H) FDR3,Crystal Palace (A) FDR3,Coventry City (H) FDR2,Man Utd (A) FDR4,Sunderland (H) FDR2,Liverpool (A) FDR4,3.0
+Nott'm Forest,Leeds (H) FDR2,Liverpool (A) FDR4,Spurs (H) FDR3,Aston Villa (A) FDR4,Coventry City (H) FDR2,Crystal Palace (A) FDR3,3.0
+Spurs,Brentford (A) FDR3,Newcastle (H) FDR2,Nott'm Forest (A) FDR3,Everton (H) FDR3,Aston Villa (H) FDR3,Man Utd (A) FDR4,3.0
+Sunderland,Ipswich Town (A) FDR2,Fulham (H) FDR2,Brentford (A) FDR3,Arsenal (H) FDR4,Man City (A) FDR5,Brighton (H) FDR2,3.0
+Brentford,Spurs (H) FDR3,Leeds (A) FDR3,Sunderland (H) FDR2,Bournemouth (A) FDR3,Chelsea (H) FDR4,Aston Villa (A) FDR4,3.17
+Coventry City,Arsenal (A) FDR5,Hull City (H) FDR2,Man City (A) FDR5,Brighton (H) FDR2,Nott'm Forest (A) FDR3,Newcastle (H) FDR2,3.17
+Hull City,Man Utd (H) FDR4,Coventry City (A) FDR2,Aston Villa (H) FDR3,Chelsea (A) FDR4,Newcastle (A) FDR3,Everton (H) FDR3,3.17
+Leeds,Nott'm Forest (A) FDR3,Brentford (H) FDR3,Brighton (A) FDR3,Newcastle (H) FDR2,Crystal Palace (H) FDR3,Arsenal (A) FDR5,3.17
+Fulham,Chelsea (H) FDR4,Sunderland (A) FDR3,Crystal Palace (H) FDR3,Liverpool (A) FDR4,Man Utd (H) FDR4,Ipswich Town (A) FDR2,3.33
+Bournemouth,Man City (A) FDR5,Everton (H) FDR3,Newcastle (A) FDR3,Brentford (H) FDR3,Liverpool (H) FDR4,Chelsea (A) FDR4,3.67
