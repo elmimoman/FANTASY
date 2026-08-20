@@ -2,7 +2,8 @@
 
 > Este archivo lo mantiene el agente semanal (y David) al día. Cada vez que hagas un cambio real en la app de FPL, actualiza esta lista para que las recomendaciones futuras partan del estado correcto.
 
-- **Team ID en FPL:** (pendiente — David: si me pasas tu Team ID o el link de tu equipo en la app, el agente puede intentar comparar directo contra tu plantilla real)
+- **Team ID en FPL:** 4682544 (equipo "Los Mimomanes")
+- **Nota API:** FPL oculta los picks de cualquier equipo hasta que pasa el deadline de esa jornada (regla anti-copia). Desde GW2 en adelante, `https://fantasy.premierleague.com/api/entry/4682544/event/{N}/picks/` devuelve la alineación real ya congelada de la jornada N una vez pasado su deadline — se puede consultar en vivo desde una máquina con internet normal (el entorno cloud de Claude tiene el dominio bloqueado, pero la sesión local de Claude Code sí conecta).
 - **Presupuesto usado:** £100.0m / £100.0m
 - **Última actualización:** 2026-08-20 (pre-Gameweek 1)
 
