@@ -1,0 +1,9 @@
+# Credenciales y tokens - NUNCA subir esto al repo
+scripts/.yahoo_tokens.json
+scripts/.yahoo_app.json
+*.env
+.env
+
+# Basura habitual de Python
+__pycache__/
+*.pyc
