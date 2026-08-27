@@ -43,6 +43,7 @@ def build_rows(data):
                 "posicion": POSITION_NAMES.get(player["element_type"], player["element_type"]),
                 "precio_millones": player["now_cost"] / 10,
                 "puntos_totales": player["total_points"],
+                "ep_next": player["ep_next"],
                 "forma": player["form"],
                 "porcentaje_seleccionado": player["selected_by_percent"],
                 "lesionado_o_duda": player["status"] != "a",
