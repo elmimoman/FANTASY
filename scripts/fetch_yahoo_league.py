@@ -44,7 +44,7 @@ def refresh_access_token(tokens):
     data = urllib.parse.urlencode(
         {
             "grant_type": "refresh_token",
-            "redirect_uri": "oob",
+            "redirect_uri": "https://localhost:8080",
             "refresh_token": tokens["refresh_token"],
         }
     ).encode()

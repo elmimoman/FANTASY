@@ -6,15 +6,20 @@ ANTES de correr esto, registrá una app en Yahoo:
   1. Andá a https://developer.yahoo.com/apps/create/
   2. Nombre: lo que quieras (ej. "Mi Fantasy NFL")
   3. Homepage URL: cualquiera, ej. https://example.com
-  4. Redirect URI(s): oob
+  4. Redirect URI(s): https://localhost:8080
+     (el formulario de Yahoo ya no acepta el viejo "oob" a secas, pide una URL
+     con formato válido — no hace falta que haya nada corriendo ahí realmente)
   5. API Permissions: marcá "Fantasy Sports" con acceso "Read"
   6. Creá la app y copiá el "Client ID (Consumer Key)" y "Client Secret (Consumer Secret)"
 
 Uso:
     python3 yahoo_auth.py --client_id TU_CLIENT_ID --client_secret TU_CLIENT_SECRET
 
-El script te da una URL para abrir en el navegador, hacés login con tu cuenta de
-Yahoo, autorizás la app, y Yahoo te muestra un código para pegar de vuelta acá.
+El script te da una URL para abrir en el navegador. Hacés login con tu cuenta de
+Yahoo y autorizás la app. El navegador te va a llevar a una página que dice que
+no puede conectar (es normal, no hay nada corriendo en localhost:8080) — lo que
+importa es la URL de esa página: tiene un "code=XXXXX" en la barra de
+direcciones. Copiá ese código y pegalo acá cuando el script te lo pida.
 Guarda el token (incluido el refresh_token) en scripts/.yahoo_tokens.json —
 ese archivo NO se sube al repo (está en .gitignore), es solo para tu máquina.
 
@@ -29,7 +34,7 @@ import urllib.request
 
 AUTH_URL = "https://api.login.yahoo.com/oauth2/request_auth"
 TOKEN_URL = "https://api.login.yahoo.com/oauth2/get_token"
-REDIRECT_URI = "oob"  # out-of-band: Yahoo muestra el código en pantalla, no necesita servidor local
+REDIRECT_URI = "https://localhost:8080"  # tiene que ser IDÉNTICO al que registraste en la app de Yahoo
 
 TOKENS_PATH = os.path.join(os.path.dirname(__file__), ".yahoo_tokens.json")
 
@@ -45,7 +50,10 @@ def get_authorization_code(client_id):
     print("\n1. Abrí esta URL en tu navegador y logueate con tu cuenta de Yahoo:\n")
     print(f"   {url}\n")
     print("2. Autorizá la app cuando te lo pida.")
-    print("3. Yahoo te va a mostrar un código en pantalla — pegalo acá abajo.\n")
+    print("3. El navegador te va a mostrar 'no se puede acceder a este sitio' —")
+    print("   es normal. Mirá la BARRA DE DIRECCIONES de esa página: ahí vas a")
+    print("   ver algo como https://localhost:8080/?code=XXXXXXX")
+    print("   Copiá solo la parte después de 'code=' (y antes de un '&' si hay).\n")
     return input("Código: ").strip()
 
 
