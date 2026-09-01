@@ -16,12 +16,26 @@ detectó, no el análisis. La causa real: no había ninguna herramienta de draft
 la sugerencia salió de charla, sin ningún dato de ADP de por medio. De ahí sale
 `scripts/draft_nfl.py`, que aplica esta regla automáticamente.
 
-## 1. Fuente de datos: ADP real, del formato exacto de tu liga
+## 1. Fuente de datos
 
-`scripts/draft_nfl.py` baja el ADP de FantasyFootballCalculator (API pública, sin login),
-pidiendo el mismo formato que tu liga: cantidad de equipos, puntuación (PPR / half-PPR /
-standard) y temporada. El ADP de un draft de 10 equipos standard no sirve para una liga de
-12 PPR — la posición de cada jugador cambia.
+**Principal — `nfl_ranking.csv` (versionado en el repo).** Ranking de consenso (ECR) de
+FantasyPros: 517 jugadores con su rango promedio y la desviación estándar de ese consenso.
+Sale del espejo público de DynastyProcess en GitHub, que scrapea FantasyPros cada semana.
+Lo regenera `scripts/fetch_nfl_ranking.py`. El archivo commiteado es el scrape del
+**2026-08-28**.
+
+Ojo con el matiz: el ECR es *dónde lo rankean los expertos*, no *en qué pick se lo llevan*
+de verdad. Correlacionan fuerte y están en la misma escala (rango 9 ≈ pick 9), pero no son
+lo mismo: en ligas de amigos el ADP real suele adelantar QBs y jugadores locales.
+
+**Alternativa mejor si tenés internet abierto — `--api`.** Baja el ADP real de
+FantasyFootballCalculator, medido en drafts reales del formato exacto de tu liga (equipos,
+PPR/half/standard, temporada). Si podés usarla, usala: el ADP de 10 equipos standard no
+sirve para una liga de 12 PPR.
+
+Nota de entorno: la terminal cloud de Claude tiene bloqueados por política de red
+`fantasyfootballcalculator.com`, `api.sleeper.app`, FantasyPros y ESPN — solo deja pasar
+GitHub y PyPI. Por eso la fuente principal es un CSV en el repo y no una llamada en vivo.
 
 ## 2. Modelo de disponibilidad
 
@@ -63,12 +77,18 @@ draft se sale de guion, mandan los jugadores que efectivamente quedan en la list
 ## 5. Cómo se corre
 
 ```bash
-# Antes del draft: tablero completo desde tu pick
-python3 scripts/draft_nfl.py --equipos 12 --pick 9 --scoring ppr
+# Antes del draft: tablero completo desde tu pick (usa nfl_ranking.csv del repo)
+python3 scripts/draft_nfl.py --equipos 12 --pick 9
 
 # En vivo, descontando lo que ya se fueron
 python3 scripts/draft_nfl.py --equipos 12 --pick 9 --tomados tomados.txt
+
+# Con ADP real en vez del ranking (necesita internet sin filtros)
+python3 scripts/draft_nfl.py --equipos 12 --pick 9 --scoring ppr --api
+
+# Refrescar el ranking antes del draft (necesita: pip install pyarrow)
+python3 scripts/fetch_nfl_ranking.py
 ```
 
-La primera corrida con internet guarda `scripts/nfl_adp.json`, así que después funciona
-aunque se caiga la conexión (o con `--adp-json`).
+Con `--api`, la primera corrida guarda `scripts/nfl_adp.json` y después funciona aunque se
+caiga la conexión.

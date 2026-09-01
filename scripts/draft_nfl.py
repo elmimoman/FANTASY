@@ -7,9 +7,12 @@ Si drafteas en el pick 9 y alguien te sugiere a Ja'Marr Chase (ADP ~2), esa
 recomendación es inútil: se lo llevan 7 picks antes. Este script nunca sugiere a
 un jugador sin antes calcular la probabilidad de que siga libre en TU pick.
 
-Fuente de ADP: FantasyFootballCalculator (API pública, sin login). Devuelve el
-ADP promedio y su desviación estándar real por jugador, medidos sobre drafts
-reales del formato que le pidas (redraft, PPR/standard/half-PPR, N equipos).
+Fuentes de datos (en orden de preferencia):
+  1. nfl_ranking.csv — ranking de consenso (ECR) de FantasyPros con su desviación
+     estándar, ya versionado en el repo. Lo regenera scripts/fetch_nfl_ranking.py.
+  2. FantasyFootballCalculator (--api) — ADP real medido en drafts reales del
+     formato exacto de tu liga. Es mejor dato que el ECR, pero necesita internet
+     sin filtros: si tu conexión lo bloquea, se usa el CSV.
 
 Uso tipico:
     python3 draft_nfl.py --equipos 12 --pick 9
@@ -17,12 +20,13 @@ Uso tipico:
 Durante el draft, para recalcular con lo que ya se fueron:
     python3 draft_nfl.py --equipos 12 --pick 9 --tomados tomados.txt
 
-Sin internet (o para congelar los datos):
-    python3 draft_nfl.py --equipos 12 --pick 9 --adp-json nfl_adp.json
+Con ADP real en vez del ranking (necesita internet abierto):
+    python3 draft_nfl.py --equipos 12 --pick 9 --api
 
 No requiere instalar nada: solo Python 3 (libreria estandar).
 """
 import argparse
+import csv
 import json
 import math
 import os
@@ -30,8 +34,11 @@ import sys
 import unicodedata
 import urllib.request
 
+RANKING = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "nfl_ranking.csv")
 API = "https://fantasyfootballcalculator.com/api/v1/adp/{scoring}?teams={teams}&year={year}&position=all"
 CACHE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "nfl_adp.json")
+
+ETIQUETA = "ADP"   # se cambia a "ECR" cuando la fuente es el ranking de consenso
 
 # Umbrales de probabilidad de seguir libre en tu pick.
 P_OBJETIVO = 0.60   # muy probable que este ahi: se puede planificar con el
@@ -51,6 +58,21 @@ def descargar_adp(scoring, equipos, anio):
     if not jugadores:
         raise SystemExit("La API respondio sin jugadores. Probá otro --anio (quizá el ADP de esta temporada aún no está publicado).")
     return jugadores
+
+
+def cargar_ranking_csv(ruta):
+    """Lee nfl_ranking.csv (ECR de FantasyPros). El ECR ocupa el lugar del ADP:
+    es un rango de consenso, comparable en escala al número de pick."""
+    with open(ruta, encoding="utf-8") as f:
+        filas = list(csv.DictReader(f))
+    if not filas:
+        raise SystemExit(f"{ruta} está vacío. Regeneralo con scripts/fetch_nfl_ranking.py")
+    global ETIQUETA
+    ETIQUETA = "ECR"
+    fecha = filas[0].get("fecha", "?")
+    print(f"Fuente: ranking de consenso FantasyPros del {fecha} ({len(filas)} jugadores).", file=sys.stderr)
+    return [{"name": r["nombre"], "position": r["posicion"], "team": r["equipo"],
+             "adp": float(r["ecr"]), "stdev": float(r["sd"] or 0)} for r in filas]
 
 
 def cargar_adp(args):
@@ -119,7 +141,7 @@ def leer_tomados(ruta):
 # ---------------------------------------------------------------- salida
 
 def fmt(j, p=None):
-    linea = f"  {j['adp']:>5.1f} ADP  {j['position']:<3} {j['name']:<24} {j.get('team') or '--':<3}"
+    linea = f"  {j['adp']:>5.1f} {ETIQUETA}  {j['position']:<3} {j['name']:<24} {j.get('team') or '--':<3}"
     if p is not None:
         linea += f"  libre en tu pick: {p*100:>3.0f}%"
     return linea
@@ -198,12 +220,24 @@ def main():
     ap.add_argument("--top", type=int, default=6, help="cuántos candidatos mostrar por bloque")
     ap.add_argument("--tomados", help="archivo .txt con los jugadores ya drafteados, uno por línea")
     ap.add_argument("--adp-json", dest="adp_json", help="usar un JSON de ADP ya descargado en vez de la API")
+    ap.add_argument("--api", action="store_true",
+                    help="usar el ADP real de FantasyFootballCalculator en vez del ranking del repo")
+    ap.add_argument("--ranking", default=RANKING, help="ruta del CSV de ranking (default: nfl_ranking.csv)")
     args = ap.parse_args()
 
     if not 1 <= args.pick <= args.equipos:
         raise SystemExit(f"--pick debe estar entre 1 y {args.equipos}")
 
-    jugadores = cargar_adp(args)
+    if args.api or args.adp_json:
+        jugadores = cargar_adp(args)
+    elif os.path.exists(args.ranking):
+        jugadores = cargar_ranking_csv(args.ranking)
+    else:
+        raise SystemExit(
+            f"No encuentro {args.ranking}. Generalo con:\n"
+            "    python3 scripts/fetch_nfl_ranking.py\n"
+            "o usá --api para bajar el ADP real de FantasyFootballCalculator.")
+
     limpios = [
         {"name": j["name"], "position": j["position"], "team": j.get("team"),
          "adp": float(j["adp"]), "stdev": float(j.get("stdev") or 0)}
