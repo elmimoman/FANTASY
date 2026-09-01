@@ -7,3 +7,9 @@ scripts/.yahoo_app.json
 # Basura habitual de Python
 __pycache__/
 *.pyc
+
+# ADP descargado (se regenera solo)
+scripts/nfl_adp.json
+nfl_jugadores.csv
+nfl_jugadores.json
+tomados.txt
