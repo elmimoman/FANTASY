@@ -54,6 +54,7 @@ AVISOS = {
     "camskattebo": "Vuelve de lesión seria de pierna/tobillo. Comparte la cima del depth chart con Tracy Jr.",
     "buckyirving": "Operado del hombro, arrancó la pretemporada a tope. Sigue como RB principal de Tampa.",
     "tylerwarren": "Molestia en el aductor. Los Colts van con cautela, pero debería llegar a la fecha 1.",
+    "joshjacobs": "NO LO AGARRES pase lo que pase con su ranking. Está en la lista de exentos del comisionado (cargos por incidente domestico de mayo) - no puede practicar ni jugar mientras siga ahi, sin fecha de regreso. Ademas venia de una lesion de ingle. Su ECR esta desactualizado y no refleja nada de esto. Backfield de GB mientras tanto: MarShawn Lloyd es el favorito, despues Chris Brooks y Kaleb Johnson.",
 }
 
 # Umbrales de probabilidad de seguir libre en tu pick.
