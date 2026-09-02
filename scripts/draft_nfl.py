@@ -40,6 +40,22 @@ CACHE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "nfl_adp.json")
 
 ETIQUETA = "ADP"   # se cambia a "ECR" cuando la fuente es el ranking de consenso
 
+# Avisos de último momento (contrato, lesión, rol) que el ADP/ECR no siempre refleja
+# a tiempo. Se revisan a mano vía búsqueda web — fecha de la última revisión abajo.
+# Clave: nombre normalizado (sin tildes, minúsculas, sin espacios).
+AVISOS_FECHA = "2026-09-01"
+AVISOS = {
+    "jamescookiii": "Standoff de contrato con Buffalo (hold-in, sin acuerdo cerca, rumores de trade). Explica por qué su rango de ECR es tan ancho (mejor 7º, peor 34º) - no es solo talento, es incertidumbre de si termina la temporada en ese equipo.",
+    "jamescook": "Standoff de contrato con Buffalo (hold-in, sin acuerdo cerca, rumores de trade). Explica por qué su rango de ECR es tan ancho (mejor 7º, peor 34º) - no es solo talento, es incertidumbre de si termina la temporada en ese equipo.",
+    "ashtonjeanty": "Lesión de tobillo. El mercado ya lo empujó al final de la ronda 2 - no lo pagues como si fuera ronda 1.",
+    "kylemonangai": "Rodilla hiperextendida en práctica, semana a semana. Duda seria para la fecha 1.",
+    "malikinabers": "Vuelve de rotura de cruzado y menisco (segunda cirugía en mayo). Apunta a la fecha 1, pero el mercado lo está regalando por el miedo - si te llega, es valor real.",
+    "georgekittle": "Vuelve de rotura de Aquiles. El mercado ya compró el descuento: subió ~8 puestos.",
+    "camskattebo": "Vuelve de lesión seria de pierna/tobillo. Comparte la cima del depth chart con Tracy Jr.",
+    "buckyirving": "Operado del hombro, arrancó la pretemporada a tope. Sigue como RB principal de Tampa.",
+    "tylerwarren": "Molestia en el aductor. Los Colts van con cautela, pero debería llegar a la fecha 1.",
+}
+
 # Umbrales de probabilidad de seguir libre en tu pick.
 P_OBJETIVO = 0.60   # muy probable que este ahi: se puede planificar con el
 P_REALISTA = 0.25   # posible: vale la pena tenerlo en el radar
@@ -140,10 +156,18 @@ def leer_tomados(ruta):
 
 # ---------------------------------------------------------------- salida
 
-def fmt(j, p=None):
+def aviso_de(j):
+    return AVISOS.get(normalizar(j["name"]))
+
+
+def fmt(j, p=None, vistos_aviso=None):
     linea = f"  {j['adp']:>5.1f} {ETIQUETA}  {j['position']:<3} {j['name']:<24} {j.get('team') or '--':<3}"
     if p is not None:
         linea += f"  libre en tu pick: {p*100:>3.0f}%"
+    if aviso_de(j):
+        linea += "  ⚠"
+        if vistos_aviso is not None and j["name"] not in [v["name"] for v in vistos_aviso]:
+            vistos_aviso.append(j)
     return linea
 
 
@@ -157,6 +181,9 @@ def informe(jugadores, args):
     print(f"Tus picks: {', '.join(str(p) for p in picks)}")
     if tomados:
         print(f"Descontados {len(tomados)} jugadores ya tomados.")
+    print(f"Avisos de contrato/lesión revisados a mano el {AVISOS_FECHA} — marcados con ⚠ abajo.")
+
+    vistos_aviso = []
 
     primero = picks[0]
 
@@ -165,7 +192,7 @@ def informe(jugadores, args):
     if inalcanzables:
         print(f"\n=== NO los vas a alcanzar en el pick {primero} (se van antes) ===")
         for j in inalcanzables:
-            print(fmt(j, prob_disponible(j["adp"], j.get("stdev"), primero)))
+            print(fmt(j, prob_disponible(j["adp"], j.get("stdev"), primero), vistos_aviso))
 
     # 2) Ronda por ronda, solo gente que puede estar ahi de verdad.
     for r, pick in enumerate(picks, 1):
@@ -189,11 +216,11 @@ def informe(jugadores, args):
         if apuestas:
             print(f"  Se te pueden escapar (libre <{P_OBJETIVO*100:.0f}%), pero si están, son el mejor valor:")
             for p, j in apuestas[:args.top]:
-                print(fmt(j, p))
+                print(fmt(j, p, vistos_aviso))
         if seguros:
             print(f"  Objetivos realistas (libre >={P_OBJETIVO*100:.0f}%):")
             for p, j in seguros[:args.top]:
-                print(fmt(j, p))
+                print(fmt(j, p, vistos_aviso))
 
         # Mejor disponible por posicion, para no quedarte con un hueco
         print("  Mejor por posición:")
@@ -203,7 +230,12 @@ def informe(jugadores, args):
             if pos in vistos or p < P_OBJETIVO:
                 continue
             vistos.add(pos)
-            print(fmt(j, p))
+            print(fmt(j, p, vistos_aviso))
+
+    if vistos_aviso:
+        print(f"\n=== ⚠ Avisos de contrato/lesión (revisados a mano el {AVISOS_FECHA}) ===")
+        for j in vistos_aviso:
+            print(f"  {j['name']}: {aviso_de(j)}")
 
     print(f"\nRegla: nunca planificar con un jugador por debajo de {P_REALISTA*100:.0f}% de estar libre.")
     print("Durante el draft, anotá los que se van en un .txt (uno por línea) y volvé a correr con --tomados.")
