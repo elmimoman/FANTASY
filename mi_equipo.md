@@ -7,7 +7,8 @@
 - **Presupuesto usado:** £99.5m / £100.0m (£0.5m libre en el banco)
 - **Zona horaria de David:** Panamá (UTC-5, sin horario de verano). A partir de ahora reportar horarios de deadlines en hora de Panamá. El deadline de GW1 (viernes 21 de agosto, 18:30 BST) equivale a **12:30 hora de Panamá** — confirmado con la app real de David, no es un cambio real, solo la conversión.
 - **Preferencias de David (además del modelo):** le gusta el Arsenal (desempate solo en igualdad real de condiciones — ver `criterio.md`). No confía en el arranque de temporada del Spurs por ahora ("no sé cómo va a venir ese equipo") — se evitan jugadores del Spurs que vayan a jugar minutos reales, hasta que haya evidencia de cómo empiezan (revisar después de GW1-2, esto no es una regla permanente). **Excepción confirmada:** no aplica al portero suplente — un suplente casi nunca juega, así que ahí se elige por mérito puro. Dubravka (Spurs, £4.0m) es el portero suplente objetivamente mejor a ese precio (96 pts, 21.2% de selección — el resto de opciones a £4.0m tiene 0-6 pts), se queda en la plantilla.
-- **Última actualización:** 2026-08-20 (pre-Gameweek 1) — sale Xhaka, entra Ampadu (Leeds) para bajar concentración de Sunderland (era 3, ahora 2: Ballard + Brobbey). Confirmado Tzolis titular vs Coventry.
+- **Última actualización:** 2026-09-12 (pre-Gameweek 4) — sale Collins (Brentford, fascitis/calf, confirmado fuera hasta después de la fecha FIFA de septiembre por Keith Andrews), entra Muñoz (Nott'm Forest, £5.5m, mismo precio). Ojo: `fpl_precios.csv` tenía a Muñoz con equipo desactualizado (Crystal Palace) — se fue a Nott'm Forest el 30 de agosto (£22m, se reencuentra con Glasner) y el dato ya se corrigió en el CSV.
+- 2026-08-20 (pre-Gameweek 1) — sale Xhaka, entra Ampadu (Leeds) para bajar concentración de Sunderland (era 3, ahora 2: Ballard + Brobbey). Confirmado Tzolis titular vs Coventry.
 - **Concentración por equipo:** David prefiere no tener 3 jugadores del mismo club aunque el límite de FPL lo permita — si a ese equipo le va mal una semana, pega en varias posiciones a la vez. Revisar cada vez que se arme/ajuste la plantilla.
 
 ## Plantilla (15)
@@ -19,7 +20,7 @@
 | DEF | Gabriel | Arsenal | £8.0m | Titular |
 | DEF | Guéhi | Man City | £6.0m | Titular |
 | DEF | Ballard | Sunderland | £5.0m | Titular |
-| DEF | Collins | Brentford | £5.5m | Titular |
+| DEF | Muñoz | Nott'm Forest | £5.5m | Titular |
 | DEF | Diop | Ipswich Town | £4.0m | Suplente |
 | MID | Bruno Fernandes | Man Utd | £12.0m | Titular |
 | MID | Anderson | Man City | £6.5m | Titular |
@@ -30,7 +31,7 @@
 | FWD | Brobbey | Sunderland | £6.0m | Titular |
 | FWD | Neave | Newcastle | £4.5m | Suplente |
 
-**Once inicial (4-4-2):** Lammens; Gabriel, Guéhi, Ballard, Collins; B.Fernandes, Anderson, Ampadu, Tzolis; Haaland, Brobbey
+**Once inicial (4-4-2):** Lammens; Gabriel, Guéhi, Ballard, Muñoz; B.Fernandes, Anderson, Ampadu, Tzolis; Haaland, Brobbey
 **Banco:** Dubravka (GK), Diop, Lewis-Potter, Neave
 **Capitán por jornada (no es fijo — ver metodología en `criterio.md`):**
 - GW1: **Bruno Fernandes** (vs Hull City, FDR2) sobre Haaland (vs Bournemouth, FDR3)

@@ -85,6 +85,20 @@ sale y cuál era su proyección vs. la del jugador pedido, para que la decisión
 informada y quede clara en el historial de `mi_equipo.md`. El modelo no bloquea
 preferencias personales, solo las hace transparentes.
 
+## 10. Verificar el club real antes de recomendar, no solo confiar en el CSV
+
+El snapshot de `fpl_precios.csv` es del 20 de agosto (pre-temporada) y no se pudo
+regenerar desde entonces (API bloqueada). Si un jugador cambió de club en una
+transferencia de última hora del mercado (fin de agosto), el CSV puede seguir
+mostrando el equipo viejo — los puntos/precio siguen siendo válidos (son del
+jugador, no del club), pero el **fixture y el equipo hay que verificarlos con
+búsqueda web** antes de recomendar un fichaje, sobre todo si el jugador es poco
+conocido o el pick es "raro". (Aprendido el 2026-09-12: se recomendó a Daniel
+Muñoz como reemplazo de Collins usando fixtures de Crystal Palace — David
+preguntó "¿para quién juega?" y se descubrió que ya estaba en Nottingham Forest
+desde el 30 de agosto. El CSV ya se corrigió, pero la lección es no asumir que
+el equipo del CSV es correcto sin más, especialmente entrando septiembre.)
+
 ## Archivos de datos (se regeneran con los scripts en `scripts/`)
 
 - `fpl_precios.csv` — precios y estadísticas de los 595 jugadores (`scripts/fetch_fpl_prices.py`)
