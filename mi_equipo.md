@@ -32,13 +32,33 @@
 
 **Vice-capitán:** revisar cada semana con el modelo (ver `criterio.md`) — no asumir que sigue siendo Bruno Fernandes, ya no está en el equipo.
 
-## Discusión abierta / pendiente
+## Plan decidido: Wildcard en GW9 (deadline 2026-10-31)
 
-- **Revisión integral pendiente (iniciada 2026-10-23):** diagnóstico con datos reales de 7 jornadas detectó 5 problemas: Lammens (resuelto → Raya), Bruno Fernandes (resuelto → Mbeumo), y quedan **3 sin resolver**:
-  - **Wissa** (FWD, Newcastle, £6.1m): 18 pts/7 jornadas, ppg 2.6, forma 1.5. No rinde.
-  - **Anderson** (MID, Man City, £6.3m): 22 pts, ppg 3.1, forma 3.5. Flojo para el precio.
-  - **Yarmoliuk** (MID, Brentford, £4.8m): suspendido hasta 8 nov, slot muerto en banca hasta entonces.
-  Sin transfers gratis disponibles tras los 2 de esta semana. Opciones sobre la mesa: (a) ir de a uno con transfers normales las próximas semanas, (b) usar el **Wildcard** (ninguno usado, disponible hasta GW19) para resolver los 3 de una vez sin costo. Decisión pendiente — David prefirió no decidirlo apurado antes del deadline de GW8, sesión aparte con calma.
+**Decisión tomada 2026-10-23:** en vez de arreglar Wissa/Anderson/Yarmoliuk de a uno
+con transfers normales (2+ semanas sangrando puntos), se usa el **Wildcard** (ninguno
+gastado todavía) para la GW9, resolviendo todo de una vez sin costo.
+
+**Candidatos identificados (con datos reales de 7 jornadas, a confirmar/refrescar
+justo antes del deadline):**
+- Wissa (FWD, £6.1m, 18pts, forma1.5) → **Kostoulas** (Brighton, £5.7m, 41pts,
+  forma6.5, más consistente) o **Evanilson** (Bournemouth, £6.1m, 37pts, forma9.5,
+  más caliente ahora mismo pero debuta GW9... revisar fixture exacto al refrescar).
+- Anderson (MID, £6.3m, 22pts, forma3.5) → **Rice** (Arsenal, £7.3m, 36pts, forma8.0
+  — mejor forma de todos los candidatos evaluados; ya no hay límite de 2 por Arsenal).
+- Yarmoliuk (MID, suspendido hasta 8 nov) → por definir, cualquier opción decente lo
+  mejora.
+- Revisar también con el wildcard (no urgente pero vale la pena aprovechar): Guéhi y
+  Hall, marcados como "bien pero bajando" en el diagnóstico del 23 de octubre.
+
+**Próximo paso:** 2-3 días antes del deadline de GW9 (31 oct), refrescar
+`fpl_precios.csv`/`fpl_fixtures.csv` con datos en vivo y confirmar los reemplazos
+finales antes de jugar el chip — los números de arriba son del 23 de octubre, pueden
+moverse.
+
+**Otros chips:** ninguno más por ahora. Bench Boost necesita banca fuerte (la actual
+está floja — Dubravka, Diop, Ballard lesionado, Yarmoliuk suspendido). Triple Captain
+se guarda para doble jornada o fixture soñado de Haaland. Free Hit se guarda para una
+blank gameweek. Ninguno de los tres tiene una ventana identificada todavía.
 
 ## Metodología
 
