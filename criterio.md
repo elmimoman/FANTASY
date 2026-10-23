@@ -58,13 +58,10 @@ proyecte el modelo — es una decisión de riesgo, no de rendimiento esperado. S
 documenta en `mi_equipo.md` con la razón y una fecha de revisión (normalmente tras
 2-3 jornadas de evidencia real), para no dejarla como regla permanente por accidente.
 
-## 6. Concentración máxima por equipo: 2, no 3
+## 6. (Eliminada 2026-10-23) Concentración máxima por equipo
 
-FPL permite hasta 3 jugadores del mismo club real, pero David prefiere no llegar a
-ese límite — si a un equipo le va mal una racha de fixtures, pega en varias
-posiciones de la plantilla a la vez. Al armar o ajustar el equipo, evitar pasar de
-2 jugadores por club salvo que el tercero sea claramente superior a cualquier
-alternativa (ahí sí se documenta la excepción explícitamente).
+Regla retirada a pedido de David. Ya no hay límite propio por club — aplica
+únicamente el límite de FPL (máx. 3 por club real).
 
 ## 7. Excepción para el portero suplente
 
