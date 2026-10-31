@@ -23,24 +23,26 @@
 | DEF | De Cuyper | Brighton | £5.3m | Titular |
 | DEF | Diop | Ipswich Town | £3.9m | Suplente |
 | DEF | Hill | Bournemouth | £5.5m | Suplente |
-| MID | Mbeumo | Man Utd | £7.9m | Titular |
-| MID | Rice | Arsenal | £7.4m | Titular (doubt 75%) |
-| MID | Tavernier | Bournemouth | £6.5m | Titular — **Vice-capitán** |
+| MID | Mbeumo | Man Utd | £7.9m | Titular — **Vice-capitán** |
+| MID | Rice | Arsenal | £7.4m | Suplente (doubt 75% + fixture duro) |
+| MID | Tavernier | Bournemouth | £6.5m | Titular |
 | MID | Belloumi | Hull City | £5.2m | Titular |
-| MID | Groß | Brighton | £6.2m | Suplente SOLO esta semana (Man City fuera, FDR5) |
+| MID | Groß | Brighton | £6.2m | Titular (David lo prefiere — patea penales) |
 | FWD | Haaland | Man City | £15.8m | Titular — **Capitán** |
 | FWD | Evanilson | Bournemouth | £6.3m | Titular |
 | FWD | Jackson | Aston Villa | £6.9m | Titular |
 
-**Once GW9 (3-4-3):** Raya; Calafiori, Bogle, De Cuyper; Mbeumo, Rice, Tavernier, Belloumi; Haaland, Evanilson, Jackson
-**Banco GW9:** Dubravka (GK), Diop, Hill, Groß
-**Capitán:** Haaland | **Vice-capitán:** Tavernier
+**Once GW9 final (3-4-3):** Raya; Calafiori, Bogle, De Cuyper; Mbeumo, Tavernier, Belloumi, Groß; Haaland, Evanilson, Jackson
+**Banco GW9:** Dubravka (GK), Diop, Hill, **Rice**
+**Capitán:** Haaland | **Vice-capitán:** Mbeumo (Man Utd visita Chelsea — defensa confirmada como la más floja de la liga, ver análisis abajo)
 **Valor plantilla:** ≈£97.8m usados de ≈£102.3m disponibles (≈£4.5m en banco)
 **Jugadores por club (máx. FPL = 3):** Arsenal 3 (Raya, Calafiori, Rice) · Bournemouth 3 (Hill, Tavernier, Evanilson) · Brighton 2 (De Cuyper, Groß) · Leeds 2 (Bogle + banca) · resto 1
 
-**⚠️ Verificar el sábado antes del deadline (06:00 Panamá):** Calafiori y Rice al 75% de jugar — Arsenal juega DOMINGO 1 nov, así que no hay forma de tener confirmación 100% antes del deadline de hoy (sábado). Es riesgo irreducible, no falta de investigación. Hay banca real para cubrir (Diop/Hill) si hace falta.
+**⚠️ Verificar el sábado antes del deadline (06:00 Panamá):** Calafiori al 75% de jugar, titular igual — Arsenal juega DOMINGO 1 nov, no hay forma de tener confirmación 100% antes del deadline de hoy. Riesgo irreducible, no falta de investigación. Rice (también 75% + fixture duro vs Liverpool) se bajó al banco por esto mismo, prefiriendo a Belloumi (más puntos, sin duda, mejor fixture) en su lugar.
 
-**Nota sobre Groß en banco:** no es downgrade de calidad (58 pts, el mejor mediocampista de la plantilla por puntos) — se sienta solo por el fixture de esta semana (mismo trato que le dimos a Kostoulas antes de sacarlo). Vuelve al XI en GW10 (Brighton recibe a Brentford, FDR3).
+**Nota sobre Groß titular:** a pedido de David (es el pateador de penales del Brighton) — pese al fixture duro (Man City fuera, FDR5). Es defendible: 58 pts, el mejor mediocampista de la plantilla por puntos reales, y patea penales es una fuente de puntos real que el modelo de fixture no captura bien.
+
+**Chelsea confirmado como la peor defensa medida hasta ahora** (análisis de goles recibidos ajustado por calidad de rival, ver tabla abajo): 1.88 goles recibidos/partido (el peor crudo) y +3.12 de ajuste (el peor de los tres equipos medidos: Fulham 0.0, Man City -0.4, Chelsea +3.12) — conceden incluso contra ataques flojos (Fulham, Hull). Por eso Mbeumo (Man Utd visita Chelsea) pasa a vice-capitán.
 
 ## Por qué cada cambio (datos reales de la temporada, no forma ni proyección de pretemporada)
 
