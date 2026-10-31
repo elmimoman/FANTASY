@@ -96,6 +96,35 @@ preguntó "¿para quién juega?" y se descubrió que ya estaba en Nottingham For
 desde el 30 de agosto. El CSV ya se corrigió, pero la lección es no asumir que
 el equipo del CSV es correcto sin más, especialmente entrando septiembre.)
 
+## 11. La "forma" es una señal débil — no pesarla de más
+
+Validado con datos reales el 2026-10-31 (`scripts/analyze_form_correlation.py`,
+239 jugadores con ≥300 min jugados, 1182 observaciones jugador-jornada de esta
+temporada): se midió la correlación de Pearson entre distintos predictores y los
+puntos del siguiente partido.
+
+| Predictor | r |
+|---|---|
+| Forma (promedio últimos 3 partidos) | 0.135 |
+| Forma (promedio últimos 5 partidos) | 0.114 |
+| Solo el partido anterior | 0.149 — 0.160 |
+| Puntos/partido de toda la temporada hasta ese punto | 0.097 — 0.137 |
+
+Todos los valores son débiles (r<0.2, menos del 2.5% de la varianza explicada), y
+promediar más partidos **no mejora** la predicción — el partido más reciente solo
+predice tan bien o mejor que cualquier promedio. Conclusión práctica:
+
+- **No usar la forma como argumento fuerte** para preferir un jugador sobre otro.
+  Sirve como desempate menor entre opciones ya parejas en track record/proyección,
+  no como razón principal (ej: "forma 8.0" no es, por sí solo, motivo suficiente
+  para un fichaje — se usó así varias veces antes de esta validación).
+- Dar más peso relativo a: minutos garantizados (nailed starter), puntos totales
+  de la temporada, y la proyección ajustada por fixture (sección 2) — son señales
+  más estables que la forma reciente.
+- Esto no invalida mirar lesiones/dudas físicas (eso es otra cosa, binario: juega
+  o no juega) — es específicamente sobre usar el número de "forma"/racha como
+  predictor de rendimiento futuro.
+
 ## Archivos de datos (se regeneran con los scripts en `scripts/`)
 
 - `fpl_precios.csv` — precios y estadísticas de los 595 jugadores (`scripts/fetch_fpl_prices.py`)
