@@ -31,8 +31,13 @@
 | FWD | Evanilson | Bournemouth | £6.3m | Titular (NUEVO, por Wissa) |
 | FWD | Kostoulas | Brighton | £5.8m | Titular (NUEVO, por João Pedro) |
 
-**Once inicial (3-4-3):** Raya; Calafiori, Hill, De Cuyper; Mbeumo, Groß, Rice, Tavernier; Haaland, Evanilson, Kostoulas
-**Banco:** Dubravka (GK), Justin, Bogle, Belloumi — banca fuerte a propósito (50/40/43 pts reales), buena para autosubs y deja la puerta abierta a un Bench Boost más adelante
+**Once inicial para GW9 (3-5-2, ajustado):** Raya; Calafiori, Hill, De Cuyper; Mbeumo, Groß, Rice, Tavernier, Belloumi; Haaland, Evanilson
+**Banco GW9:** Dubravka (GK), Justin, Bogle, **Kostoulas**
+
+**⚠️ Kostoulas (Brighton FWD) fuera del XI SOLO esta semana — no es un cambio de fichaje.** Brighton juega de visita contra Man City en GW9, FDR5 (el peor rating posible), partido el 31 oct 15:00 UTC. Se banquea por Belloumi (ya estaba en el equipo) y vuelve al XI en GW10, donde Brighton juega en casa vs Brentford (FDR3) y luego GW11 fuera vs Hull (FDR2) — fixtures mucho mejores. El 11 "base" de la plantilla sigue siendo el de 3-4-3 de abajo; esto es solo la alineación semanal.
+
+**Once "base" de la plantilla (3-4-3, se retoma desde GW10):** Raya; Calafiori, Hill, De Cuyper; Mbeumo, Groß, Rice, Tavernier; Haaland, Evanilson, Kostoulas
+**Banco base:** Dubravka (GK), Justin, Bogle, Belloumi — banca fuerte a propósito (50/40/43 pts reales), buena para autosubs y deja la puerta abierta a un Bench Boost más adelante
 **Capitán:** Haaland | **Vice-capitán:** Mbeumo
 **Valor plantilla:** £97.3m usados de £102.3m disponibles (£5.0m en banco)
 **Jugadores por club (máx. FPL = 3):** Arsenal 3 (Raya, Calafiori, Rice) · Brighton 3 (Groß, De Cuyper, Kostoulas) · Bournemouth 3 (Hill, Tavernier, Evanilson) · Leeds 2 (Justin, Bogle) · resto 1
