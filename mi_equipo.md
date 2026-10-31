@@ -4,85 +4,88 @@
 
 - **Team ID en FPL:** 4682544 (equipo "Los Mimomanes")
 - **Nota API:** FPL oculta los picks de cualquier equipo hasta que pasa el deadline de esa jornada. Una vez pasado, `https://fantasy.premierleague.com/api/entry/4682544/event/{N}/picks/` devuelve la alineación real — confirmado que conecta sin problema desde una sesión local de Claude Code (el entorno cloud del agente programado sigue bloqueado, 403 confirmado semana tras semana).
-- **⚠️ Problema de sincronización activo:** el agente semanal clona la rama `claude/fantasy-premier-league-values-bp1obf` de GitHub, no `main` — el "default branch" del repo nunca se cambió en la configuración de GitHub (paso manual pendiente de David, ver nota en el repo). Mientras no se cambie, cualquier edición de este archivo hecha en `main` **no la ve el agente** hasta que alguien la mergee a la otra rama. Ver sección de historial del 2026-10-30 para el caso real donde esto causó un informe con datos de hace 2 meses.
+- **⚠️ Problema de sincronización activo:** el agente semanal clona la rama `claude/fantasy-premier-league-values-bp1obf` de GitHub, no `main` — el "default branch" del repo nunca se cambió en la configuración de GitHub (paso manual pendiente de David). Mientras no se cambie, cualquier edición hecha en `main` no la ve el agente hasta que alguien la mergee a la otra rama (se viene haciendo manualmente cada sesión).
 - **Zona horaria de David:** Panamá (UTC-5, sin horario de verano). Reportar deadlines siempre en hora de Panamá.
-- **Preferencias de David:** le gusta el Arsenal (desempate solo en igualdad real de condiciones — ver `criterio.md`). Sin límite propio de jugadores por club (eliminado 2026-10-23), solo el límite de FPL (máx. 3). Exclusión de Spurs sigue vigente salvo el portero suplente (Dubravka, por mérito).
+- **Preferencias de David:** le gusta el Arsenal (desempate solo en igualdad real de condiciones — ver `criterio.md`). Sin límite propio de jugadores por club, solo el límite de FPL (máx. 3). Exclusión de Spurs sigue vigente salvo el portero suplente (Dubravka, por mérito).
 - **Transfers gratis:** FPL permite bancar hasta 4 extra (5 en total). Revisar `event_transfers`/`event_transfers_cost` en `.../history/` antes de asumir que solo hay 1 disponible.
-- **Chips:** **Wildcard #1 usado el 2026-10-30/31, previo al deadline de GW9.** Quedan: Free Hit, Bench Boost, Triple Captain (1ra mitad, hasta GW19) + el set completo de 4 para la 2da mitad (GW20-38).
-- **Última actualización:** 2026-10-31 (pre-Gameweek 9) — Wildcard jugado, 6 cambios (ver historial). Plantilla sincronizada vía API real (picks de GW8).
+- **Chips:** **Wildcard #1 usado el 2026-10-31, previo al deadline de GW9.** Quedan: Free Hit, Bench Boost, Triple Captain (1ra mitad, hasta GW19) + el set completo de 4 para la 2da mitad (GW20-38).
+- **⚠️ La "forma" es señal débil, no la sobre-pesar** (validado con datos reales el 2026-10-31, r≈0.1-0.16 de correlación con el siguiente partido — ver `criterio.md` sección 11). Priorizar puntos de temporada, minutos garantizados y proyección ajustada por fixture.
+- **Última actualización:** 2026-10-31 (pre-Gameweek 9) — Wildcard jugado + ajustes post-wildcard el mismo día (ver historial).
 
-## Plantilla (15) — post-Wildcard, a jugar para GW9
+## Plantilla (15) — final para GW9
 
-| Pos | Jugador | Equipo | Precio | Rol |
-|-----|---------|--------|--------|-----|
-| GK  | Raya | Arsenal | £6.2m | Titular |
+| Pos | Jugador | Equipo | Precio | Rol GW9 |
+|-----|---------|--------|--------|---------|
+| GK  | Raya | Arsenal | £6.2m | Titular (Calafiori/Rice 75% — ver abajo) |
 | GK  | Dubravka | Spurs | £4.0m | Suplente |
-| DEF | Calafiori | Arsenal | £5.9m | Titular (doubt 75% — confirmar sábado) |
-| DEF | Hill | Bournemouth | £5.5m | Titular (NUEVO, por Guéhi) |
-| DEF | De Cuyper | Brighton | £5.3m | Titular (NUEVO, por Hall) |
-| DEF | Justin | Leeds | £4.5m | Suplente (NUEVO, por Diop) |
-| DEF | Bogle | Leeds | £4.8m | Suplente (NUEVO, por Ballard) |
+| DEF | Calafiori | Arsenal | £5.9m | Titular (doubt 75%) |
+| DEF | Bogle | Leeds | £4.8m | Titular |
+| DEF | De Cuyper | Brighton | £5.3m | Titular |
+| DEF | Diop | Ipswich Town | £3.9m | Suplente |
+| DEF | Hill | Bournemouth | £5.5m | Suplente |
 | MID | Mbeumo | Man Utd | £7.9m | Titular |
-| MID | Groß | Brighton | £6.2m | Titular |
-| MID | Rice | Arsenal | £7.4m | Titular (NUEVO, por Anderson; doubt 75% — confirmar sábado) |
-| MID | Tavernier | Bournemouth | £6.5m | Titular (NUEVO, por Yarmoliuk) |
-| MID | Belloumi | Hull City | £5.2m | Suplente (NUEVO, por Ampadu) |
+| MID | Rice | Arsenal | £7.4m | Titular (doubt 75%) |
+| MID | Tavernier | Bournemouth | £6.5m | Titular — **Vice-capitán** |
+| MID | Belloumi | Hull City | £5.2m | Titular |
+| MID | Groß | Brighton | £6.2m | Suplente SOLO esta semana (Man City fuera, FDR5) |
 | FWD | Haaland | Man City | £15.8m | Titular — **Capitán** |
-| FWD | Evanilson | Bournemouth | £6.3m | Titular (NUEVO, por Wissa) |
-| FWD | Kostoulas | Brighton | £5.8m | Titular (NUEVO, por João Pedro) |
+| FWD | Evanilson | Bournemouth | £6.3m | Titular |
+| FWD | Jackson | Aston Villa | £6.9m | Titular |
 
-**Once inicial para GW9 (3-5-2, ajustado):** Raya; Calafiori, Hill, De Cuyper; Mbeumo, Groß, Rice, Tavernier, Belloumi; Haaland, Evanilson
-**Banco GW9:** Dubravka (GK), Justin, Bogle, **Kostoulas**
+**Once GW9 (3-4-3):** Raya; Calafiori, Bogle, De Cuyper; Mbeumo, Rice, Tavernier, Belloumi; Haaland, Evanilson, Jackson
+**Banco GW9:** Dubravka (GK), Diop, Hill, Groß
+**Capitán:** Haaland | **Vice-capitán:** Tavernier
+**Valor plantilla:** ≈£97.8m usados de ≈£102.3m disponibles (≈£4.5m en banco)
+**Jugadores por club (máx. FPL = 3):** Arsenal 3 (Raya, Calafiori, Rice) · Bournemouth 3 (Hill, Tavernier, Evanilson) · Brighton 2 (De Cuyper, Groß) · Leeds 2 (Bogle + banca) · resto 1
 
-**⚠️ Kostoulas (Brighton FWD) fuera del XI SOLO esta semana — no es un cambio de fichaje.** Brighton juega de visita contra Man City en GW9, FDR5 (el peor rating posible), partido el 31 oct 15:00 UTC. Se banquea por Belloumi (ya estaba en el equipo) y vuelve al XI en GW10, donde Brighton juega en casa vs Brentford (FDR3) y luego GW11 fuera vs Hull (FDR2) — fixtures mucho mejores. El 11 "base" de la plantilla sigue siendo el de 3-4-3 de abajo; esto es solo la alineación semanal.
+**⚠️ Verificar el sábado antes del deadline (06:00 Panamá):** Calafiori y Rice al 75% de jugar — Arsenal juega DOMINGO 1 nov, así que no hay forma de tener confirmación 100% antes del deadline de hoy (sábado). Es riesgo irreducible, no falta de investigación. Hay banca real para cubrir (Diop/Hill) si hace falta.
 
-**Once "base" de la plantilla (3-4-3, se retoma desde GW10):** Raya; Calafiori, Hill, De Cuyper; Mbeumo, Groß, Rice, Tavernier; Haaland, Evanilson, Kostoulas
-**Banco base:** Dubravka (GK), Justin, Bogle, Belloumi — banca fuerte a propósito (50/40/43 pts reales), buena para autosubs y deja la puerta abierta a un Bench Boost más adelante
-**Capitán:** Haaland | **Vice-capitán:** Mbeumo
-**Valor plantilla:** £97.3m usados de £102.3m disponibles (£5.0m en banco)
-**Jugadores por club (máx. FPL = 3):** Arsenal 3 (Raya, Calafiori, Rice) · Brighton 3 (Groß, De Cuyper, Kostoulas) · Bournemouth 3 (Hill, Tavernier, Evanilson) · Leeds 2 (Justin, Bogle) · resto 1
+**Nota sobre Groß en banco:** no es downgrade de calidad (58 pts, el mejor mediocampista de la plantilla por puntos) — se sienta solo por el fixture de esta semana (mismo trato que le dimos a Kostoulas antes de sacarlo). Vuelve al XI en GW10 (Brighton recibe a Brentford, FDR3).
 
-**Bournemouth queda con 2 jugadores (Hill + Tavernier + Evanilson = en realidad 3)** — equipo con el mejor arranque de fixtures GW9-12 (avg FDR 2.8) de los candidatos evaluados, por eso aparece 3 veces en la plantilla junto con Brighton (Groß, De Cuyper, Kostoulas) y Arsenal (Raya, Calafiori, Rice).
+## Por qué cada cambio (datos reales de la temporada, no forma ni proyección de pretemporada)
 
-**⚠️ Verificar el sábado antes del deadline (06:00 Panamá):** Calafiori y Rice están al 75% de jugar (dudas menores, no lesiones serias) — confirmar en la alineación oficial. Si alguno no juega, hay banca de verdad para cubrir ahora (Bogle/Belloumi), no solo bench fodder.
-
-## Por qué cada cambio (datos reales GW1-8, no proyección de pretemporada)
-
-**Titulares:**
+**Wildcard — titulares:**
 
 | Sale | Entra | Razón |
 |---|---|---|
-| Hall (£5.3m, 40pts, forma3.0) | De Cuyper (£5.3m, 60pts, forma7.3) | Mismo precio exacto, 20 pts más en la temporada. Upgrade gratis. |
-| Guéhi (£6.0m, 37pts, forma2.3) | Hill (£5.5m, 32pts, forma6.7) | A pedido de David — no era un caso tan claro como los demás (Tarkowski/Gvardiol tenían más puntos pero forma igual de fría), pero Hill gana por mejor combo de fixtures (Bournemouth GW9-12, avg FDR 2.8, el mejor de los candidatos) + forma más caliente + más barato. |
-| Anderson (£6.3m, 23pts, forma2.7) | Rice (£7.4m, 39pts, forma6.3) | Anderson nunca rindió lo que prometía el hype pre-temporada. |
-| Yarmoliuk (suspendido hasta 8 nov) | Tavernier (£6.5m, 52pts, forma7.0) | Slot muerto en banca → 2do mejor mediocampista por puntos reales de toda la liga a ese precio. |
-| Wissa (£6.1m, 19pts, forma1.3) | Evanilson (£6.3m, 43pts, forma8.3) | Wissa nunca despegó; Evanilson está en la mejor racha de su posición. |
-| João Pedro (£7.9m, 47pts) | Kostoulas (£5.8m, 43pts, forma5.0) | João Pedro salió lesionado (muslo, **sin fecha de regreso confirmada**) — no es que rindiera mal, es que ya no puede jugar. |
+| Hall (£5.3m, 40pts) | De Cuyper (£5.3m, 60pts) | Mismo precio exacto, 20 pts más en la temporada. |
+| Anderson (£6.3m, 23pts) | Rice (£7.4m, 39pts) | Anderson nunca rindió lo que prometía el hype pre-temporada. |
+| Yarmoliuk (suspendido hasta 8 nov) | Tavernier (£6.5m, 52pts) | Slot muerto en banca → 2do mejor mediocampista real de la liga a ese precio. |
+| Wissa (£6.1m, 19pts) | Evanilson (£6.3m, 43pts) | Wissa nunca despegó. |
+| João Pedro (£7.9m, 47pts) | Kostoulas (£5.8m, 43pts) | João Pedro se lesionó (muslo, sin fecha de regreso) — no es rendimiento, es que ya no puede jugar. |
 
-**Banca (David preguntó "¿y la banca?" — con el wildcard gratis, no hay razón para dejarla floja):**
+**Wildcard — banca:**
 
 | Sale | Entra | Razón |
 |---|---|---|
-| Diop (£3.9m, 18pts) | Justin (Leeds, £4.5m, 40pts, forma4.7) | +£0.6m por más del doble de puntos. |
-| Ballard (lesionado, sin fecha, 14pts) | Bogle (Leeds, £4.8m, 50pts, forma2.7) | Mismo precio, roster muerto → uno de los defensas más puntudos de la liga a ese precio. |
-| Ampadu (£5.3m, 25pts, forma1.3) | Belloumi (Hull City, £5.2m, 43pts, forma4.0) | Gomez (Brighton) era mejor opción pero Brighton ya tenía 3 (límite de FPL) — Belloumi es el siguiente mejor sin chocar con el límite. |
+| Diop (£3.9m, 18pts) | Justin (Leeds, £4.5m, 40pts) | +£0.6m por más del doble de puntos. |
+| Ballard (lesionado, sin fecha) | Bogle (Leeds, £4.8m, 50pts) | Mismo precio, roster muerto → uno de los defensas más puntudos de la liga a ese precio. |
+| Ampadu (£5.3m, 25pts) | Belloumi (Hull City, £5.2m, 43pts) | Casi el doble de puntos, más barato. |
 
-**Resultado:** Arsenal, Brighton y Bournemouth quedan con 3 jugadores cada uno (el máximo de FPL) — los tres equipos con mejor rendimiento real entre los candidatos evaluados. Leeds queda con 2 (ambos en banca).
+**Post-wildcard, mismo día (31 oct), tras revisión con David:**
+
+| Sale | Entra | Razón |
+|---|---|---|
+| Guéhi (£6.0m, 37pts) | Hill (£5.5m, 32pts) | A pedido de David. Ojo: con los puntos reales, Hill es el MENOS productivo de los 4 candidatos evaluados (Tarkowski 48, Gvardiol 42, Guéhi 37, Hill 32) — se sostiene solo porque David no quería a Guéhi específicamente, no porque sea la mejor opción por datos. |
+| Justin (£4.5m, banca) → **revertido**: Hill pasa a banca, **Bogle entra al XI** | — | Bogle (50 pts) tiene más puntos reales que Hill (32) y que Tarkowski (48) — mejor que comprar un nuevo jugador, con lo que ya se tenía alcanzaba. Gratis, sin transfer. |
+| Kostoulas (£5.8m, 43pts) | **Jackson** (Aston Villa, £6.9m, 34pts) | A pedido explícito de David. Por puntos/precio, Kostoulas era mejor (más puntos, más barato) — se documenta la diferencia. Se validó el fixture con un análisis de goles recibidos ajustado por calidad de rival: Man City (rival de Kostoulas) y Fulham (rival de Jackson) resultaron casi iguales en defensa ajustada (Man City ≈-0.4, Fulham ≈0.0) — el FDR5 de Man City exagera la dificultad real, pero no cambia que Jackson entra por preferencia de David, no por ventaja estadística clara. |
+
+**Hallazgo nuevo (2026-10-31): defensa ajustada por calidad de rival.** Mirar solo goles recibidos por un equipo no alcanza — hay que ver CONTRA QUIÉN se los metieron. Ejemplo real: Man City recibió 9 goles en 8 partidos (parece sólido), pero 3 de esos se los metió Sunderland, el ataque más débil de la liga (0.75 goles/partido) — eso es una grieta real que el número crudo esconde. Fórmula casera: para cada partido, `goles_recibidos - goles_por_partido_del_rival`, sumado en la temporada. Positivo = defensa más floja de lo que aparenta; negativo = mejor de lo que aparenta. Pendiente: decidir si esto se formaliza como script reusable (`scripts/analyze_defense_adjusted.py`) o se calcula puntual cuando haga falta.
 
 ## Otros chips — plan
 
-- **Bench Boost:** ahora sí es viable más adelante — banca real con 50/40/43 pts (Bogle/Justin/Belloumi), ya no es bench fodder. Esperar una jornada donde los 4 titulares de banca tengan buen fixture a la vez.
+- **Bench Boost:** banca con puntos reales ahora (Diop 18, Hill 32, Groß 58 esta semana) pero depende de qué 4 queden en banco cada jornada — evaluar semana a semana, no hay fecha fija todavía.
 - **Triple Captain:** guardar para doble jornada o fixture soñado de Haaland — nada identificado aún.
 - **Free Hit:** guardar para blank gameweek — nada anunciado aún.
 
 ## Metodología
 
-Ver `criterio.md` para el modelo completo y las reglas de desempate/exclusión.
+Ver `criterio.md` para el modelo completo, reglas de desempate/exclusión, y la validación de que la forma es señal débil (sección 11).
 
 ## Historial de decisiones
 
 - **2026-08-20:** Plantilla inicial armada con datos reales de la API, £100.0m exactos.
 - **2026-08-20 (rebuilds 1-2, GK):** Reconstrucción con `criterio.md`; se saca Spurs, entra Tzolis; sale Raya por Lammens (Saliba lesionado).
 - **2026-09-04 a 2026-10-10 (reconstruido vía API el 2026-10-23, no registrado en su momento):** David hizo 5 transfers reales en la app sin anotar — entre otros, Calafiori por Gabriel, entraron Hall, Yarmoliuk, Groß, João Pedro, Wissa.
-- **2026-10-23 (pre-GW8):** Lammens → Raya, Bruno Fernandes → Mbeumo (datos reales mostraban a Bruno en forma 1.0). Se elimina el límite propio de 2 por club.
-- **2026-10-30/31 (pre-GW9, Wildcard):** Diagnóstico integral con datos reales de 8 jornadas detectó 5 problemas (incluyendo a João Pedro, lesionado esta misma semana). Se jugó el Wildcard, 9 cambios en total: 5 titulares (Hall→De Cuyper, Anderson→Rice, Yarmoliuk→Tavernier, Wissa→Evanilson, João Pedro→Kostoulas), 1 titular más a pedido de David (Guéhi→Hill, caso más parejo), y 3 de banca (Diop→Justin, Ballard→Bogle, Ampadu→Belloumi) tras preguntar "¿y la banca?". **Se detectó y documentó el problema de sincronización de ramas** (el informe automático del 29 oct seguía hablando de Ballard/Bruno Fernandes, datos de hace semanas) — pendiente que David cambie el default branch en GitHub a `main`.
+- **2026-10-23 (pre-GW8):** Lammens → Raya, Bruno Fernandes → Mbeumo. Se elimina el límite propio de 2 por club.
+- **2026-10-31 (pre-GW9, Wildcard + ajustes):** Wildcard con 8 cambios (Hall→De Cuyper, Anderson→Rice, Yarmoliuk→Tavernier, Wissa→Evanilson, João Pedro→Kostoulas, Diop→Justin, Ballard→Bogle, Ampadu→Belloumi) + Guéhi→Hill a pedido de David. Mismo día, revisión post-wildcard con David: Bogle sube al XI por Hill (gratis, Bogle tiene más puntos), y Kostoulas sale por Jackson a pedido explícito. **Se validó que la "forma" correlaciona débil (r≈0.1-0.16) con el siguiente partido** — downweighted en el criterio desde ahora. **Se construyó un análisis de defensa ajustada por calidad de rival** (goles recibidos vs. lo esperado según el ataque rival) para no guiarse solo por el FDR crudo. **Se detectó el problema de sincronización de ramas** — pendiente que David cambie el default branch en GitHub a `main`.
