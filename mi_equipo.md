@@ -4,7 +4,7 @@
 
 - **Team ID en FPL:** 4682544 (equipo "Los Mimomanes")
 - **Nota API:** FPL oculta los picks de cualquier equipo hasta que pasa el deadline de esa jornada. Una vez pasado, `https://fantasy.premierleague.com/api/entry/4682544/event/{N}/picks/` devuelve la alineación real — confirmado que conecta sin problema desde una sesión local de Claude Code (el entorno cloud del agente programado sigue bloqueado, 403 confirmado semana tras semana).
-- **⚠️ Problema de sincronización activo:** el agente semanal clona la rama `claude/fantasy-premier-league-values-bp1obf` de GitHub, no `main` — el "default branch" del repo nunca se cambió en la configuración de GitHub (paso manual pendiente de David). Mientras no se cambie, cualquier edición hecha en `main` no la ve el agente hasta que alguien la mergee a la otra rama (se viene haciendo manualmente cada sesión).
+- **✅ Problema de sincronización resuelto (2026-11-06):** se confirmó vía API de GitHub que el "default branch" del repo ya es `claude/fantasy-premier-league-values-bp1obf` (no `main`), y que ambas ramas están sincronizadas al 100% (0 commits de diferencia). Ya no hace falta mergear `main` a mano cada semana.
 - **Zona horaria de David:** Panamá (UTC-5, sin horario de verano). Reportar deadlines siempre en hora de Panamá.
 - **Preferencias de David:** le gusta el Arsenal (desempate solo en igualdad real de condiciones — ver `criterio.md`). Sin límite propio de jugadores por club, solo el límite de FPL (máx. 3). Exclusión de Spurs sigue vigente salvo el portero suplente (Dubravka, por mérito).
 - **Transfers gratis:** FPL permite bancar hasta 4 extra (5 en total). Revisar `event_transfers`/`event_transfers_cost` en `.../history/` antes de asumir que solo hay 1 disponible.
